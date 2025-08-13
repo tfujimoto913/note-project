@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Macro Snapshot</title>
+</head>
+<body>
+    <h1>最新マクロスナップショット</h1>
+    <pre id="json"></pre>
+
+    <script>
+        fetch('latest_snapshot.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('json').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('json').textContent = 'Error loading JSON: ' + error;
+            });
+    </script>
+</body>
+</html>
