@@ -1,22 +1,57 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Macro Snapshot</title>
-</head>
-<body>
-    <h1>最新マクロスナップショット</h1>
-    <pre id="json"></pre>
+<!doctype html>
+<meta charset="utf-8" />
+<title>Macro Snapshot</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:24px;line-height:1.5}
+  .pill{display:inline-block;padding:4px 10px;border:1px solid #ddd;border-radius:999px;font-size:12px;margin-right:6px}
+  .card{border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin:12px 0;background:#fff}
+  h1{font-size:20px;margin:0 0 8px}
+  h2{font-size:16px;margin:0 0 8px}
+  ul{margin:8px 0 0 20px}
+  pre{white-space:pre-wrap}
+</style>
 
-    <script>
-        fetch('./latest_snapshot.json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('json').textContent = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                document.getElementById('json').textContent = 'Error loading JSON: ' + error;
-            });
-    </script>
-</body>
-</html>
+<header>
+  <div class="pill" id="ts">--</div>
+  <div class="pill" id="gran">--</div>
+</header>
+<h1 id="headline">Loading…</h1>
+
+<section class="card">
+  <h2>無料版ビュー</h2>
+  <ul id="freeList"></ul>
+</section>
+
+<section class="card">
+  <h2>有料版ビュー</h2>
+  <ul id="paidList"></ul>
+  <div id="scores"></div>
+</section>
+
+<script>
+(async () => {
+  try {
+    const res = await fetch('./latest_snapshot.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+    const snap = await res.json();
+
+    const $ = id => document.getElementById(id);
+    $('headline').textContent = snap.headline ?? '(no headline)';
+    $('ts').textContent = 'TS: ' + (snap.ts ?? '-');
+    const gran = snap.paid_view?.granularity || snap.free_view?.granularity || '-';
+    $('gran').textContent = 'granularity: ' + gran;
+
+    (snap.free_view?.bullets ?? []).forEach(b => {
+      const li = document.createElement('li'); li.textContent = b; $('freeList').appendChild(li);
+    });
+    (snap.paid_view?.bullets ?? []).forEach(b => {
+      const li = document.createElement('li'); li.textContent = b; $('paidList').appendChild(li);
+    });
+
+    const sc = snap.paid_view?.scores;
+    $('scores').textContent = sc ? 'scores: ' + JSON.stringify(sc) : '';
+  } catch (e) {
+    document.body.innerHTML = '<p>読み込みエラー: ' + e + '</p>';
+  }
+})();
+</script>
