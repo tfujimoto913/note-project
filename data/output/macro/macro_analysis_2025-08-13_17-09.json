@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "ts": "2025-08-13T17:09:57.1886740\u002B09:00",
+    "version": "macro.analyze v1.0",
+    "interval_base": "6h"
+  },
+  "momentum": {
+    "BTC.D": {
+      "ch_recent": 0,
+      "bias": "flat"
+    },
+    "TOTAL3": {
+      "ch_recent": 0,
+      "bias": "flat"
+    },
+    "OTHERS.D": {
+      "ch_recent": 0,
+      "bias": "flat"
+    }
+  },
+  "ai_flow_interpretation": {
+    "structure": "btc_dominant",
+    "total3_projection_bias": "flat",
+    "others_d_pressure_score": 0.5,
+    "certainty_score": 0.5
+  }
+}
