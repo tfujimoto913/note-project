@@ -9,7 +9,7 @@
     <pre id="json"></pre>
 
     <script>
-        fetch('latest_snapshot.json')
+        fetch('./latest_snapshot.json')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('json').textContent = JSON.stringify(data, null, 2);
