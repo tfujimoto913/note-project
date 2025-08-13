@@ -1,0 +1,10 @@
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)
+    page = browser.new_page()
+    page.goto("https://www.tradingview.com")
+    page.screenshot(path="tv_test.png")
+    browser.close()
+
+print("スクリーンショットを保存しました: tv_test.png")

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "ts": "2025-08-13T16:04:57.753747+09:00",
+    "interval": "6h",
+    "sources": [
+      "Dummy-API"
+    ],
+    "version": "macro.collect v1.0"
+  },
+  "indices": {
+    "BTC.D": 48.2,
+    "USDT.D": 6.9,
+    "ETHBTC": 0.0521,
+    "TOTAL2": 1130000000000.0,
+    "TOTAL3": 540000000000.0,
+    "OTHERS.D": 18.6
+  },
+  "sectors_cap": {
+    "AI": 192000000000.0,
+    "L2": 115000000000.0,
+    "RWA": 87000000000.0,
+    "Meme": 71000000000.0,
+    "DePIN": 43000000000.0
+  },
+  "etf_flows": {
+    "BTC_spot": 120000000,
+    "ETH_spot": 35000000
+  },
+  "notes": "OK"
+}

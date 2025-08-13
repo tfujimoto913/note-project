@@ -1,0 +1,4 @@
+2025-08-13T16:00:04.5704910+09:00	macro.collect	macro.collect saved → /Users/taka919191/Documents/note-project/data/input/macro/2025-08/2025-08-13_16-00.json (interval=6h)
+2025-08-13T16:04:47.3567850+09:00	macro.collect	macro.collect saved → /Users/taka919191/Documents/note-project/data/input/macro/2025-08/2025-08-13_16-04.json (interval=6h)
+2025-08-13T16:04:57.7577050+09:00	macro.collect	macro.collect saved → /Users/taka919191/Documents/note-project/data/input/macro/2025-08/2025-08-13_16-04.json (interval=6h)
+2025-08-13T16:05:05.5114630+09:00	macro.analyze	macro.analyze saved → /Users/taka919191/Documents/note-project/data/output/macro/macro_analysis_2025-08-13_16-04.json & appended → /Users/taka919191/Documents/note-project/data/output/macro/macro_analysis_2025-08.tsv
